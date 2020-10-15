@@ -19,8 +19,14 @@ class InputField extends React.Component {
   }
 
   onInputChange=(e)=>{
-    console.log(e)
-    //this.setState({[name]:e.targe.value});
+    e.persist()
+    this.setState({[e.target.name]:e.target.value})
+  }
+
+
+  onSubmitForm=(e)=>{
+    e.preventDefault();
+    this.props.data(this.state);
   }
 
   render() {
@@ -30,10 +36,10 @@ class InputField extends React.Component {
           <Row>
             <Col md={{ span: 6, offset: 3 }}>
               <h1 className="mt-5">Informaton</h1>
-              <Form className="form-wrappr mt-3">
+              <Form className="form-wrappr mt-3" onSubmit={this.onSubmitForm}>
                 <FormGroup>
                   <FormControl
-                    type="input"
+                    type="text"
                     name="name"
                     value={this.state.name}
                     placeholder="type your name"
@@ -43,7 +49,7 @@ class InputField extends React.Component {
                 </FormGroup>
                 <FormGroup>
                   <FormControl
-                    type="Email"
+                    type="email"
                     name="email"
                     placeholder="type your Email"
                     onChange={this.onInputChange}

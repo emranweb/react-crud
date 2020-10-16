@@ -1,37 +1,41 @@
 import React from "react";
-import {Container, Row, Col,} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import InputField from "./InputField";
 import UserList from "./UserList";
+import axios from "axios";
 
 class App extends React.Component {
-   constructor(){
-     super();
-     this.data=[]
-     this.state={user:[]}
-   }
+  constructor() {
+    super();
+    this.state = { user: [] };
+  }
 
-   formData=(data)=>{
-      this.data.push(data)
-      this.setState({user:this.data})
-   }
+  refreshData = async () => {
+    const response = await axios.get("http://localhost:3001/users");
+    this.setState({ user: response.data });
+  };
 
-  render(){
+  async componentDidMount() {
+    const response = await axios.get("http://localhost:3001/users");
+    this.setState({ user: response.data });
+  }
+
+  render() {
     return (
       <div className="main">
         <Container>
           <Row>
             <Col>
-             <InputField  data={this.formData}/>
-             <div className="user-wrapper">
-                <UserList data={this.state.user}/>
-             </div>
+              <InputField refresh={this.refreshData} />
+              <div className="user-wrapper">
+                <UserList data={this.state.user} />
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
     );
   }
-  
 }
 
 export default App;

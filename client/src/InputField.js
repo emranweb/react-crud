@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Container,
   Row,
@@ -13,21 +14,22 @@ class InputField extends React.Component {
   constructor() {
     super();
     this.state = {
-        name: "",
-        email: "",
-      };
+      name: "",
+      email: "",
+    };
   }
 
-  onInputChange=(e)=>{
-    e.persist()
-    this.setState({[e.target.name]:e.target.value})
-  }
+  onInputChange = (e) => {
+    e.persist();
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-
-  onSubmitForm=(e)=>{
+  onSubmitForm = async (e) => {
     e.preventDefault();
-    this.props.data(this.state);
-  }
+    await axios.post("http://localhost:3001/users", this.state);
+    this.props.refresh();
+    this.setState({ name: "", email: "" });
+  };
 
   render() {
     return (
@@ -44,7 +46,6 @@ class InputField extends React.Component {
                     value={this.state.name}
                     placeholder="type your name"
                     onChange={this.onInputChange}
-                    
                   />
                 </FormGroup>
                 <FormGroup>

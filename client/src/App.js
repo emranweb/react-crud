@@ -20,6 +20,11 @@ class App extends React.Component {
     this.refreshData();
   };
 
+  editUser=async (id)=>{
+   const response = await axios.get(`http://localhost:3001/users/${id}`);
+   return response.data;
+  }
+
   async componentDidMount() {
     const response = await axios.get("http://localhost:3001/users");
     this.setState({ user: response.data });
@@ -31,9 +36,9 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col>
-              <InputField refresh={this.refreshData} />
+              <InputField edit ={this.editUser}refresh={this.refreshData} />
               <div className="user-wrapper">
-                <UserList data={this.state.user} deleate={this.deleateData} />
+                <UserList data={this.state.user} deleate={this.deleateData} edit={this.editUser}/>
               </div>
             </Col>
           </Row>

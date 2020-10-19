@@ -36,7 +36,7 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col>
-              <InputField edit ={this.editUser}refresh={this.refreshData} />
+              <InputField edit ={this.editUser} refresh={this.refreshData} />
               <div className="user-wrapper">
                 <UserList data={this.state.user} deleate={this.deleateData} edit={this.editUser}/>
               </div>

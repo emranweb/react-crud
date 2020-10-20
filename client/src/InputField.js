@@ -27,11 +27,13 @@ class InputField extends React.Component {
   onSubmitForm = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:3001/users", this.state);
-    this.props.refresh();
     this.setState({ name: "", email: "" });
+    this.props.onSubmit(this.state)
   };
 
+
   render() {
+   
     return (
       <div className="input-wrapper">
         <Container>

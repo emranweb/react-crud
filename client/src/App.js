@@ -7,28 +7,34 @@ import axios from "axios";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { user: [] };
+    this.state={
+      users:[],
+      user:{
+        name:"",
+        email:""
+      },
+      isEdit:false,
+    }
   }
+  
+  onformSubmit= async (data)=>{
 
-  refreshData = async () => {
-    const response = await axios.get("http://localhost:3001/users");
-    this.setState({ user: response.data });
-  };
-
-  deleateData = async (id) => {
-    axios.delete(`http://localhost:3001/users/${id}`);
-    this.refreshData();
-  };
-
-  editUser=async (id)=>{
-   const response = await axios.get(`http://localhost:3001/users/${id}`);
-   return response.data;
+    const response = await axios.get("http://localhost:3001/users")
+    this.setState({users:response.data})
+       
+       
   }
 
   async componentDidMount() {
     const response = await axios.get("http://localhost:3001/users");
-    this.setState({ user: response.data });
+    this.setState({ users: response.data });
   }
+
+  editUser= async (id)=>{
+    const response = await axios.get(`http://localhost:3001/users/${id}`)
+    this.setState({user:response.data, isEdit:true});
+  }
+
 
   render() {
     return (
@@ -36,9 +42,9 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col>
-              <InputField edit ={this.editUser} refresh={this.refreshData} />
+              <InputField  onSubmit={this.onformSubmit} user={this.state.user} isEdit={this.state.isEdit}/>
               <div className="user-wrapper">
-                <UserList data={this.state.user} deleate={this.deleateData} edit={this.editUser}/>
+                <UserList data={this.state.users} edit={this.editUser}/>
               </div>
             </Col>
           </Row>

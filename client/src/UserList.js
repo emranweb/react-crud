@@ -1,6 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import ModalArea from "./Modal";
+
 class UserList extends React.Component {
+   constructor(){
+     super();
+     this.state={show:false}
+   }
+
+
 
   render() {
     return this.props.data.map((item) => {
@@ -11,7 +19,9 @@ class UserList extends React.Component {
           <Button onClick={(id) => this.props.deleate(item.id)} type="button">
             Delate
           </Button>
-          <Button onClick={()=>this.props.edit(item.id)} type="button">Edit</Button>
+          <Button onClick={() => this.setState({show:true})} type="button">
+            Edit
+          </Button>
         </div>
       );
     });

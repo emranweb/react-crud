@@ -1,24 +1,9 @@
 {
   "users": [
     {
-      "name": "abc",
-      "email": "abc@gmail.com",
-      "id": "oYBvBU6"
-    },
-    {
-      "name": "abc",
-      "email": "xyz@gmail.com",
-      "id": "gLqI1iH"
-    },
-    {
-      "name": "test1@gmail.com",
-      "email": "test@gmail.com",
-      "id": "QY-K5rb"
-    },
-    {
-      "name": "abcx",
-      "email": "abc@gmail.com",
-      "id": "ed7zrY1"
+      "name": "a",
+      "email": "a@gmail.com",
+      "id": 1
     }
   ]
 }

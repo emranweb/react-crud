@@ -1,9 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom"
 import { Modal, Button } from "react-bootstrap";
 
 function ModalArea(props) {
-    console.log(props)
-  return (
+  return ReactDOM.createPortal(
     <div>
       <Modal.Dialog show={props.show}>
         <Modal.Header closeButton>
@@ -19,7 +19,8 @@ function ModalArea(props) {
           <Button variant="primary">Save changes</Button>
         </Modal.Footer>
       </Modal.Dialog>
-    </div>
+    </div>, 
+    document.querySelector("#modal")
   );
 }
 

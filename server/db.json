@@ -1,19 +1,14 @@
 {
   "users": [
     {
-      "name": "Al Emran",
-      "email": "alemran@gmail.com",
+      "name": "Alamin Khan",
+      "email": "alamin@gmail.com",
       "id": 1
     },
     {
-      "name": "Noman",
-      "email": "noman@gmail.com",
+      "name": "Sabbir Khan",
+      "email": "sabbir@gmail.com",
       "id": 2
-    },
-    {
-      "name": "Maruf",
-      "email": "Maruf@gmail.com",
-      "id": 3
     }
   ]
 }

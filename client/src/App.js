@@ -9,6 +9,8 @@ import {
   Button,
 } from "react-bootstrap";
 import axios from "axios";
+import ModalArea from "./Modal";
+import {Switch, Route} from "react-router-dom";
 
 class App extends React.Component {
   constructor() {
@@ -80,6 +82,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="main">
+
+        <Switch>
+          <Route path="/modal" component={ModalArea}/>
+        </Switch>
+
         <Container>
           <Row>
             <Col md={{ span: 6, offset: 3 }}>
